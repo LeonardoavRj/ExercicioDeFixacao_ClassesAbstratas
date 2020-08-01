@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
+import entities.Company;
 import entities.Individual;
 import entities.Tax;
 
@@ -26,15 +27,29 @@ public class Program_Tax_Cal {
 			String name = sc.nextLine();
 			System.out.print("Anual income: ");
 			double anual_Income = sc.nextDouble();
-			if (ch == i) {
+			
+			if (ch == 'i') {
 				System.out.print("Health expenditures: ");
 				double health_Expenditures = sc.nextDouble();
 				list.add(new Individual(name,anual_Income,health_Expenditures));
+			}else {
+				System.out.print("Number of employees: ");
+				int number_Of_Employees = sc.nextInt();
+				list.add(new Company(name, anual_Income, number_Of_Employees));
 			}
 			
 		}
-		
-		
+		System.out.println();
+		System.out.println("TAXES PAID: ");
+		double sum = 0.0;
+		for(Tax tax : list) {
+			
+		System.out.printf("%s: $ %.2f%n",tax.getName(), tax.Tax());
+		sum += tax.Tax();
+			
+		}
+		System.out.println();
+		System.out.printf("TOTAL TAXES: $ %.2f",sum);
 		
 		sc.close();
 	}
