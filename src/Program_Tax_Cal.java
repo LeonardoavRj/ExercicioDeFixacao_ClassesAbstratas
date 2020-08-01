@@ -13,7 +13,7 @@ public class Program_Tax_Cal {
 		// Programa para calcular Taxa.
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
-		List <Tax> list = new ArrayList<>();
+		List <Tax> list = new ArrayList<Tax>();
 		
 		System.out.print("Enter the number of tax payers: ");
 		int n = sc.nextInt();
