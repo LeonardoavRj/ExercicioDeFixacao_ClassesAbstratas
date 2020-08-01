@@ -24,13 +24,18 @@ public class Individual extends Tax {
 		// O calculo da Tax pessoa fisica e feito da seguinte forma: 
 		//Pessoas que ganham abaixo de $20.000,00 pagam 15% de Tax,
 		//pessoas que ganham de $20.000,00 em diante pagam 25% de Tax.
-		
+		double basicTax;
 		if(anual_Income < 20000.00) {
-			return anual_Income * 0.15 - health_Expenditure * 0.50;			
+			basicTax = anual_Income * 0.15 - getHealth_Expenditure() * 0.50;			
 		}
 		else {
-	 	    return anual_Income * 0.25 - health_Expenditure * 0.50;
+	 	    basicTax = anual_Income * 0.25 - getHealth_Expenditure() * 0.50;
 	    }
-	
+		if(basicTax<0) {
+			basicTax=0;
+			return basicTax;
+		}else {
+			return basicTax;
+		}
 	}
 }
